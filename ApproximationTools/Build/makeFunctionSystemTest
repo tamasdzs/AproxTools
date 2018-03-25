@@ -1,0 +1,15 @@
+CC=g++
+CFLAGS=-c -std=c++0x -I ../eigen -I ../src -I ../Build
+LDFLAGS=
+LIBS=
+SOURCES=./testFunctionSystemsWithHermite.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=functionSystemTest
+
+all: $(SOURCES) $(EXECUTABLE)
+    
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@ $(LIBS)
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
